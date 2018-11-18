@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>docker 入门 | 仙书一两卷</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一、安装 dockerCentos 7为例：一、内核版本需要大于3.10以上，可以使用uname -r 查看，如果小于则需要升级docker安装命令1yum install docker 启动 and 停止 docker12systemctl start dockersystemctl stop docker 查看docker版本1docker -v 设置docker开机自启动1systemctl">
+  <meta name="description" content="一、安装 docker 二、docker基本使用 1、镜像操作 2、运行镜像 3、使用docker exec进入Docker容器 一、先使用命令docke 二、拷贝本地文件到容器中 保存修改后的docker镜像 删除一个镜像       [TOC] 一、安装 dockerCentos 7为例：一、内核版本需要大于3.10以上，可以使用uname -r 查看，如果小于则需要升级docker安装">
 <meta name="keywords" content="docker">
 <meta property="og:type" content="article">
 <meta property="og:title" content="docker 入门">
 <meta property="og:url" content="http://yoursite.com/2018/11/19/docker-入门/index.html">
 <meta property="og:site_name" content="仙书一两卷">
-<meta property="og:description" content="一、安装 dockerCentos 7为例：一、内核版本需要大于3.10以上，可以使用uname -r 查看，如果小于则需要升级docker安装命令1yum install docker 启动 and 停止 docker12systemctl start dockersystemctl stop docker 查看docker版本1docker -v 设置docker开机自启动1systemctl">
+<meta property="og:description" content="一、安装 docker 二、docker基本使用 1、镜像操作 2、运行镜像 3、使用docker exec进入Docker容器 一、先使用命令docke 二、拷贝本地文件到容器中 保存修改后的docker镜像 删除一个镜像       [TOC] 一、安装 dockerCentos 7为例：一、内核版本需要大于3.10以上，可以使用uname -r 查看，如果小于则需要升级docker安装">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-18T19:55:57.948Z">
+<meta property="og:updated_time" content="2018-11-18T20:42:18.125Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker 入门">
-<meta name="twitter:description" content="一、安装 dockerCentos 7为例：一、内核版本需要大于3.10以上，可以使用uname -r 查看，如果小于则需要升级docker安装命令1yum install docker 启动 and 停止 docker12systemctl start dockersystemctl stop docker 查看docker版本1docker -v 设置docker开机自启动1systemctl">
+<meta name="twitter:description" content="一、安装 docker 二、docker基本使用 1、镜像操作 2、运行镜像 3、使用docker exec进入Docker容器 一、先使用命令docke 二、拷贝本地文件到容器中 保存修改后的docker镜像 删除一个镜像       [TOC] 一、安装 dockerCentos 7为例：一、内核版本需要大于3.10以上，可以使用uname -r 查看，如果小于则需要升级docker安装">
   
     <link rel="alternative" href="/atom.xml" title="仙书一两卷" type="application/atom+xml">
   
@@ -161,7 +161,26 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="一、安装-docker"><a href="#一、安装-docker" class="headerlink" title="一、安装 docker"></a>一、安装 docker</h3><p>Centos 7为例：<br>一、内核版本需要大于3.10以上，可以使用uname -r 查看，如果小于则需要升级<br>docker安装命令<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install docker</span><br></pre></td></tr></table></figure></p>
+        <!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
+<!-- code_chunk_output -->
+<ul>
+<li><a href="#一-安装-docker">一、安装 docker</a></li>
+<li><a href="#二-docker基本使用">二、docker基本使用</a><ul>
+<li><a href="#1-镜像操作">1、镜像操作</a></li>
+<li><a href="#2-运行镜像">2、运行镜像</a></li>
+<li><a href="#3-使用docker-exec进入docker容器">3、使用docker exec进入Docker容器</a><ul>
+<li><a href="#一-先使用命令docke">一、先使用命令docke</a></li>
+<li><a href="#二-拷贝本地文件到容器中">二、拷贝本地文件到容器中</a></li>
+<li><a href="#保存修改后的docker镜像">保存修改后的docker镜像</a></li>
+<li><a href="#删除一个镜像">删除一个镜像</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<!-- /code_chunk_output -->
+<p>[TOC]</p>
+<h3 id="一、安装-docker"><a href="#一、安装-docker" class="headerlink" title="一、安装 docker"></a>一、安装 docker</h3><p>Centos 7为例：<br>一、内核版本需要大于3.10以上，可以使用uname -r 查看，如果小于则需要升级<br>docker安装命令<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install docker</span><br></pre></td></tr></table></figure></p>
 <p>启动 and 停止 docker<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl start docker</span><br><span class="line">systemctl stop docker</span><br></pre></td></tr></table></figure></p>
 <p>查看docker版本<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker -v</span><br></pre></td></tr></table></figure></p>
 <p>设置docker开机自启动<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl enable docker</span><br></pre></td></tr></table></figure></p>
@@ -192,7 +211,7 @@
 <tr>
 <td>删除</td>
 <td>docker rmi image-id</td>
-<td>删除指定的本地镜像</td>
+<td>删除指定的本地镜像1</td>
 </tr>
 </tbody>
 </table>
@@ -285,11 +304,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/11/19/freemarker基本语法/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/11/19/docker-入门.1/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          freemarker基本语法
+          docker 入门
         
       </div>
     </a>
