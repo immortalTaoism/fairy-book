@@ -141,19 +141,19 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-docker-测试文章" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+    <article id="post-docker-入门" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/19/docker-测试文章/">docker 常用操作</a>
+      <a class="article-title" href="/2018/11/19/docker-入门/">docker 入门</a>
     </h1>
   
 
         
-        <a href="/2018/11/19/docker-测试文章/" class="archive-article-date">
+        <a href="/2018/11/19/docker-入门/" class="archive-article-date">
   	<time datetime="2018-11-18T19:27:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-19</time>
 </a>
         
@@ -161,7 +161,11 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="1、镜像操作"><a href="#1、镜像操作" class="headerlink" title="1、镜像操作"></a>1、镜像操作</h2><table>
+        <h3 id="一、安装-docker"><a href="#一、安装-docker" class="headerlink" title="一、安装 docker"></a>一、安装 docker</h3><p>Centos 7为例：<br>一、内核版本需要大于3.10以上，可以使用uname -r 查看，如果小于则需要升级<br>docker安装命令<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install docker</span><br></pre></td></tr></table></figure></p>
+<p>启动 and 停止 docker<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl start docker</span><br><span class="line">systemctl stop docker</span><br></pre></td></tr></table></figure></p>
+<p>查看docker版本<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker -v</span><br></pre></td></tr></table></figure></p>
+<p>设置docker开机自启动<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl enable docker</span><br></pre></td></tr></table></figure></p>
+<h3 id="二、docker基本使用"><a href="#二、docker基本使用" class="headerlink" title="二、docker基本使用"></a>二、docker基本使用</h3><h4 id="1、镜像操作"><a href="#1、镜像操作" class="headerlink" title="1、镜像操作"></a>1、镜像操作</h4><table>
 <thead>
 <tr>
 <th>操作</th>
@@ -192,14 +196,14 @@
 </tr>
 </tbody>
 </table>
-<p>2、运行镜像</p>
-<hr>
+<h4 id="2、运行镜像"><a href="#2、运行镜像" class="headerlink" title="2、运行镜像"></a>2、运行镜像</h4><hr>
 <figure class="highlight docker"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker images 查看镜像列表</span><br><span class="line">docker <span class="keyword">run</span> -d -p 8080:8080 --name mytomcat 镜像id</span><br><span class="line">-d 指定容器运行与前台还是后台，默认为false</span><br><span class="line">-p 指定容器暴露端口，映射一个端口</span><br></pre></td></tr></table></figure>
-<h2 id="3、使用docker-exec进入Docker容器"><a href="#3、使用docker-exec进入Docker容器" class="headerlink" title="3、使用docker exec进入Docker容器"></a>3、使用docker exec进入Docker容器</h2><h3 id="一、先使用命令docke"><a href="#一、先使用命令docke" class="headerlink" title="一、先使用命令docke"></a>一、先使用命令docke</h3><p>docker ps 查看正在运行的进程<br>docker exec -it 进程id /bin/bash 进入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-i 打开STDIN，用于控制台交互    </span><br><span class="line">-t 分配tty设备, 该可以支持终端登录，默认为false</span><br></pre></td></tr></table></figure></p>
+<h4 id="3、使用docker-exec进入Docker容器"><a href="#3、使用docker-exec进入Docker容器" class="headerlink" title="3、使用docker exec进入Docker容器"></a>3、使用docker exec进入Docker容器</h4><hr>
+<h5 id="一、先使用命令docke"><a href="#一、先使用命令docke" class="headerlink" title="一、先使用命令docke"></a>一、先使用命令docke</h5><p>docker ps 查看正在运行的进程<br>docker exec -it 进程id /bin/bash 进入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-i 打开STDIN，用于控制台交互    </span><br><span class="line">-t 分配tty设备, 该可以支持终端登录，默认为false</span><br></pre></td></tr></table></figure></p>
 <p>操作完成 执行exit退出    </p>
-<h3 id="二、拷贝本地文件到容器中"><a href="#二、拷贝本地文件到容器中" class="headerlink" title="二、拷贝本地文件到容器中"></a>二、拷贝本地文件到容器中</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker cp 本地文件 /容器中目录位置</span><br><span class="line">docker cp /www/runoob 96f7f14e99ab:/www</span><br></pre></td></tr></table></figure>
-<h3 id="保存修改后的docker镜像"><a href="#保存修改后的docker镜像" class="headerlink" title="保存修改后的docker镜像"></a>保存修改后的docker镜像</h3><p>docker的镜像的状态是临时，每次启动都会是一个新的，所以我们要保存这个镜像<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker commit -m &apos;fun&apos; 运行时id 镜像的名称</span><br></pre></td></tr></table></figure></p>
-<h3 id="删除一个镜像"><a href="#删除一个镜像" class="headerlink" title="删除一个镜像"></a>删除一个镜像</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rmi 镜像id</span><br></pre></td></tr></table></figure>
+<h5 id="二、拷贝本地文件到容器中"><a href="#二、拷贝本地文件到容器中" class="headerlink" title="二、拷贝本地文件到容器中"></a>二、拷贝本地文件到容器中</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker cp 本地文件 /容器中目录位置</span><br><span class="line">docker cp /www/runoob 96f7f14e99ab:/www</span><br></pre></td></tr></table></figure>
+<h5 id="保存修改后的docker镜像"><a href="#保存修改后的docker镜像" class="headerlink" title="保存修改后的docker镜像"></a>保存修改后的docker镜像</h5><p>docker的镜像的状态是临时，每次启动都会是一个新的，所以我们要保存这个镜像<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker commit -m &apos;fun&apos; 运行时id 镜像的名称</span><br></pre></td></tr></table></figure></p>
+<h5 id="删除一个镜像"><a href="#删除一个镜像" class="headerlink" title="删除一个镜像"></a>删除一个镜像</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rmi 镜像id</span><br></pre></td></tr></table></figure>
 
       
 
@@ -223,7 +227,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/19/docker-测试文章/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/11/19/docker-入门/">展开全文 >></a>
         </p>
       
 
