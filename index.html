@@ -225,6 +225,79 @@
 <p><br><br><br></p>
 <p><strong>完整的index.ftl</strong></p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Title<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"$&#123;request.contextPath&#125;/js/jquery.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">language</span>=<span class="string">"JavaScript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="comment">// js中遍历</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">#list</span> <span class="attr">name</span>?<span class="attr">keys</span> <span class="attr">as</span> <span class="attr">key</span>&gt;</span></span></span><br><span class="line"><span class="javascript">     <span class="built_in">console</span>.log(<span class="string">'$&#123;key&#125; -- $&#123;name[key]!("default value")&#125;'</span>);</span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">#list</span>&gt;</span></span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(<span class="string">"js中使用: $&#123;user&#125;"</span>);</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">获得项目路径$&#123;request.contextPath&#125;<span class="tag">&lt;<span class="name">br</span> /&gt;</span><span class="tag">&lt;<span class="name">br</span> /&gt;</span></span><br><span class="line">普通打印<span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">$&#123;user&#125;<span class="tag">&lt;<span class="name">br</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">map遍历<span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">#list</span> <span class="attr">name</span>?<span class="attr">keys</span> <span class="attr">as</span> <span class="attr">key</span>&gt;</span></span><br><span class="line">    $&#123;key&#125; -- $&#123;name[key]!("default value")&#125;<span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">#list</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">List遍历<span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">#if</span> <span class="attr">list2</span>?<span class="attr">exists</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">#list</span> <span class="attr">list2</span> <span class="attr">as</span> <span class="attr">key</span>&gt;</span></span><br><span class="line">        $&#123;key&#125;<span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">#list</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">#if</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">List<span class="tag">&lt;<span class="name">Map</span>&gt;</span> 遍历<span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">#list</span> <span class="attr">list</span> <span class="attr">as</span> <span class="attr">map</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">#list</span> <span class="attr">map</span>?<span class="attr">keys</span> <span class="attr">as</span> <span class="attr">key</span>&gt;</span></span><br><span class="line">        $&#123;key&#125; -- $&#123;name[key]!("default value")&#125;<span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">#list</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">#list</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">如果变量为null时,需要判中，或者给默认值 "$&#123;a!("默认值")&#125;" 还可以"$&#123;a!&#125;"显示空<span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">遍历到table中</span><br><span class="line">    <span class="tag">&lt;<span class="name">table</span> <span class="attr">border</span>=<span class="string">"1"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">#list</span> <span class="attr">list</span> <span class="attr">as</span> <span class="attr">map</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">#list</span> <span class="attr">map</span>?<span class="attr">keys</span> <span class="attr">as</span> <span class="attr">key</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">td</span>&gt;</span>$&#123;key&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">td</span>&gt;</span>$&#123;name[key]!("default value")&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">#list</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">#list</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">pre</span>&gt;</span></span><br><span class="line">乘法 *、 / 、%</span><br><span class="line">加法 +、-</span><br><span class="line">关系 <span class="tag">&lt;<span class="name">、</span>&gt;</span>、<span class="tag">&lt;<span class="name">=、</span>&gt;</span>=（lt、lte、gt、gte</span><br><span class="line">相等 =、!=</span><br><span class="line">逻辑 &amp;&amp;</span><br><span class="line">逻辑 ||</span><br><span class="line">    数字型比较，必须两边都是数字型</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    if elseif else 语句</span><br><span class="line">    <span class="tag">&lt;<span class="name">#if</span> <span class="attr">user</span> == <span class="string">""</span>&gt;</span></span><br><span class="line">        a为空</span><br><span class="line">    <span class="tag">&lt;<span class="name">#elseif</span> <span class="attr">user</span> != <span class="string">""</span>&gt;</span></span><br><span class="line">        $&#123;user&#125;不是空</span><br><span class="line">    <span class="tag">&lt;<span class="name">#else</span>&gt;</span></span><br><span class="line">        else</span><br><span class="line">    <span class="tag">&lt;/<span class="name">#if</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">pre</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><code>1111</code></p>
+<p><strong>111</strong></p>
+<p><del>12121212</del><br><a href="http://p2sj58chj.bkt.clouddn.com/%7BmdFileName%7D-201811916939.png" target="_blank" rel="noopener">6l</a></p>
+<p><img src="http://p2sj58chj.bkt.clouddn.com/%7BmdFileName%7D-201811916939.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1212  </span><br><span class="line">1212121  </span><br><span class="line">12112121</span><br><span class="line">1212</span><br><span class="line">1212</span><br><span class="line">121212</span><br></pre></td></tr></table></figure>
+<p><code>1212
+121212    
+12121</code></p>
+<ul>
+<li>12121212</li>
+</ul>
+<ol>
+<li>1121212</li>
+</ol>
+<ul>
+<li style="list-style: none"><input type="checkbox"> 1212 1212</li>
+</ul>
+<blockquote>
+<p>121212<br>1212<br>1212</p>
+</blockquote>
+<p>1212</p>
+<table>
+<thead>
+<tr>
+<th>121212</th>
+<th>Column B</th>
+<th>Column C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> A1</td>
+<td>B1</td>
+<td>C1</td>
+</tr>
+<tr>
+<td> A2</td>
+<td>B2</td>
+<td>C2</td>
+</tr>
+<tr>
+<td> A3</td>
+<td>B3</td>
+<td>C3</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>121212121 A</th>
+<th>Column B</th>
+<th>Column C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> A1</td>
+<td>B1</td>
+<td>C1</td>
+</tr>
+<tr>
+<td> A2</td>
+<td>B2</td>
+<td>C2</td>
+</tr>
+<tr>
+<td> A3</td>
+<td>B3</td>
+<td>C3</td>
+</tr>
+</tbody>
+</table>
 
       
 
