@@ -6,18 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2018/11 | 仙书一两卷</title>
+  <title>freemarker基本语法 | 仙书一两卷</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="仙书一两卷，树下读喃喃。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="仙书一两卷">
-<meta property="og:url" content="http://yoursite.com/archives/2018/11/index.html">
+  <meta name="description" content="1、准备工作12345&amp;lt;!-- 引入freemarker包 --&amp;gt;&amp;lt;dependency&amp;gt;    &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;    &amp;lt;artifactId&amp;gt;spring-boot-starter-freemarker&amp;lt;/artifactId&amp;gt;&amp;lt;/dependen">
+<meta property="og:type" content="article">
+<meta property="og:title" content="freemarker基本语法">
+<meta property="og:url" content="http://yoursite.com/2018/11/19/freemarker基本语法/index.html">
 <meta property="og:site_name" content="仙书一两卷">
-<meta property="og:description" content="仙书一两卷，树下读喃喃。">
+<meta property="og:description" content="1、准备工作12345&amp;lt;!-- 引入freemarker包 --&amp;gt;&amp;lt;dependency&amp;gt;    &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;    &amp;lt;artifactId&amp;gt;spring-boot-starter-freemarker&amp;lt;/artifactId&amp;gt;&amp;lt;/dependen">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-11-18T20:01:49.433Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="仙书一两卷">
-<meta name="twitter:description" content="仙书一两卷，树下读喃喃。">
+<meta name="twitter:title" content="freemarker基本语法">
+<meta name="twitter:description" content="1、准备工作12345&amp;lt;!-- 引入freemarker包 --&amp;gt;&amp;lt;dependency&amp;gt;    &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;    &amp;lt;artifactId&amp;gt;spring-boot-starter-freemarker&amp;lt;/artifactId&amp;gt;&amp;lt;/dependen">
   
     <link rel="alternative" href="/atom.xml" title="仙书一两卷" type="application/atom+xml">
   
@@ -139,87 +140,151 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-freemarker基本语法" class="article article-type-post " itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      freemarker基本语法
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/19/freemarker基本语法/" class="archive-article-date">
+
+        
+        <a href="/2018/11/19/freemarker基本语法/" class="archive-article-date">
   	<time datetime="2018-11-18T20:00:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-19</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/19/freemarker基本语法/">freemarker基本语法</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1、准备工作"><a href="#1、准备工作" class="headerlink" title="1、准备工作"></a>1、准备工作</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 引入freemarker包 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-freemarker<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>application.properties</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#设定ftl文件路径</span><br><span class="line">spring.freemarker.template-loader-path=classpath:/templates</span><br><span class="line">spring.freemarker.request-context-attribute=request # 使freemarker可以获得项目的路径</span><br><span class="line"># spring.freemarker.suffix=.html # 默认是ftl 改成html虽然不影响使用，但是html提示有错误，因为无法识别freemarker语法</span><br></pre></td></tr></table></figure>
+<p>1、java<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"toIndex.do"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">toIndex</span><span class="params">(Model model)</span> </span>&#123;</span><br><span class="line">    model.addAttribute(<span class="string">"user"</span>, <span class="string">"admin"</span>);</span><br><span class="line">    Map&lt;String, Object&gt; map = <span class="keyword">new</span> LinkedHashMap&lt;&gt;();</span><br><span class="line">    map.put(<span class="string">"name0"</span>, <span class="string">"名字"</span>);</span><br><span class="line">    map.put(<span class="string">"name1"</span>, <span class="string">"名字1"</span>);</span><br><span class="line">    map.put(<span class="string">"name2"</span>, <span class="string">"名字2"</span>);</span><br><span class="line">    model.addAttribute(<span class="string">"name"</span>, map);</span><br><span class="line">    List&lt;Map&lt;String, Object&gt;&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    list.add(map);</span><br><span class="line">    list.add(map);</span><br><span class="line">    list.add(map);</span><br><span class="line">    model.addAttribute(<span class="string">"list"</span>, list);</span><br><span class="line">    List&lt;String&gt; list2 = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    list2.add(<span class="string">"lsit2 1111"</span>);</span><br><span class="line">    list2.add(<span class="string">"lsit2 2222"</span>);</span><br><span class="line">    list2.add(<span class="string">"lsit2 3333"</span>);</span><br><span class="line">    model.addAttribute(<span class="string">"list2"</span>, list2);</span><br><span class="line">    model.addAttribute(<span class="string">"a"</span>, <span class="keyword">null</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"/ft/index"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>2、创建一个index.ftl 的html文件  </p>
+<p>获得项目路径<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$&#123;request.contextPath&#125;</span><br></pre></td></tr></table></figure></p>
+<p>普通打印<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$&#123;user&#125;</span><br></pre></td></tr></table></figure></p>
+<p>map遍历<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;#list name?keys as key&gt;</span><br><span class="line">    $&#123;key&#125; -- $&#123;name[key]!(&quot;default value&quot;)&#125;&lt;br&gt;</span><br><span class="line">&lt;/#list&gt;</span><br></pre></td></tr></table></figure></p>
+<p>List遍历<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;#if list2?exists&gt;</span><br><span class="line">    &lt;#list list2 as key&gt;</span><br><span class="line">        $&#123;key&#125;&lt;br&gt;</span><br><span class="line">    &lt;/#list&gt;</span><br><span class="line">&lt;/#if&gt;</span><br></pre></td></tr></table></figure></p>
+<p>List<map> 遍历<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;#list list as map&gt;</span><br><span class="line">    &lt;#list map?keys as key&gt;</span><br><span class="line">        $&#123;key&#125; -- $&#123;name[key]!(&quot;default value&quot;)&#125;&lt;br&gt;</span><br><span class="line">    &lt;/#list&gt;</span><br><span class="line">&lt;/#list&gt;</span><br></pre></td></tr></table></figure></map></p>
+<p>如果变量为null时,需要判中，或者给默认值 “<figure class="highlight plain"><figcaption><span>还可以"```$&#123;a!&#125;```"显示空<br></span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">遍历到table中</span><br><span class="line">```html</span><br><span class="line">    &lt;table border=&quot;1&quot;&gt;</span><br><span class="line">        &lt;#list list as map&gt;</span><br><span class="line">            &lt;#list map?keys as key&gt;</span><br><span class="line">                &lt;tr&gt;</span><br><span class="line">                    &lt;td&gt;$&#123;key&#125;&lt;/td&gt;</span><br><span class="line">                    &lt;td&gt;$&#123;name[key]!(&quot;default value&quot;)&#125;&lt;/td&gt;</span><br><span class="line">                &lt;/tr&gt;</span><br><span class="line">            &lt;/#list&gt;</span><br><span class="line">        &lt;/#list&gt;</span><br><span class="line">    &lt;/table&gt;</span><br></pre></td></tr></table></figure></p>
+<p>其他操作<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">乘法 *、 / 、%</span><br><span class="line">加法 +、-</span><br><span class="line">关系 &lt;、&gt;、&lt;=、&gt;=（lt、lte、gt、gte</span><br><span class="line">相等 =、!=</span><br><span class="line">逻辑 &amp;&amp;</span><br><span class="line">逻辑 ||</span><br></pre></td></tr></table></figure></p>
+<p>数字型比较，必须两边都是数字型<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">if elseif else 语句</span><br><span class="line">&lt;#if user == &quot;&quot;&gt;</span><br><span class="line">    a为空</span><br><span class="line">&lt;#elseif user != &quot;&quot;&gt;</span><br><span class="line">    $&#123;user&#125;不是空</span><br><span class="line">&lt;#else&gt;</span><br><span class="line">    else</span><br><span class="line">&lt;/#if&gt;</span><br></pre></td></tr></table></figure></p>
+<p>引入javascript<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">"$&#123;request.contextPath&#125;/js/jquery.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure></p>
+<p><br><br><br></p>
+<p><strong>完整的index.ftl</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Title<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"$&#123;request.contextPath&#125;/js/jquery.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">language</span>=<span class="string">"JavaScript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="comment">// js中遍历</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">#list</span> <span class="attr">name</span>?<span class="attr">keys</span> <span class="attr">as</span> <span class="attr">key</span>&gt;</span></span></span><br><span class="line"><span class="javascript">     <span class="built_in">console</span>.log(<span class="string">'$&#123;key&#125; -- $&#123;name[key]!("default value")&#125;'</span>);</span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">#list</span>&gt;</span></span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(<span class="string">"js中使用: $&#123;user&#125;"</span>);</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">获得项目路径$&#123;request.contextPath&#125;<span class="tag">&lt;<span class="name">br</span> /&gt;</span><span class="tag">&lt;<span class="name">br</span> /&gt;</span></span><br><span class="line">普通打印<span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">$&#123;user&#125;<span class="tag">&lt;<span class="name">br</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">map遍历<span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">#list</span> <span class="attr">name</span>?<span class="attr">keys</span> <span class="attr">as</span> <span class="attr">key</span>&gt;</span></span><br><span class="line">    $&#123;key&#125; -- $&#123;name[key]!("default value")&#125;<span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">#list</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">List遍历<span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">#if</span> <span class="attr">list2</span>?<span class="attr">exists</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">#list</span> <span class="attr">list2</span> <span class="attr">as</span> <span class="attr">key</span>&gt;</span></span><br><span class="line">        $&#123;key&#125;<span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">#list</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">#if</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">List<span class="tag">&lt;<span class="name">Map</span>&gt;</span> 遍历<span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">#list</span> <span class="attr">list</span> <span class="attr">as</span> <span class="attr">map</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">#list</span> <span class="attr">map</span>?<span class="attr">keys</span> <span class="attr">as</span> <span class="attr">key</span>&gt;</span></span><br><span class="line">        $&#123;key&#125; -- $&#123;name[key]!("default value")&#125;<span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">#list</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">#list</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">如果变量为null时,需要判中，或者给默认值 "$&#123;a!("默认值")&#125;" 还可以"$&#123;a!&#125;"显示空<span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">遍历到table中</span><br><span class="line">    <span class="tag">&lt;<span class="name">table</span> <span class="attr">border</span>=<span class="string">"1"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">#list</span> <span class="attr">list</span> <span class="attr">as</span> <span class="attr">map</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">#list</span> <span class="attr">map</span>?<span class="attr">keys</span> <span class="attr">as</span> <span class="attr">key</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">td</span>&gt;</span>$&#123;key&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">td</span>&gt;</span>$&#123;name[key]!("default value")&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">#list</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">#list</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">pre</span>&gt;</span></span><br><span class="line">乘法 *、 / 、%</span><br><span class="line">加法 +、-</span><br><span class="line">关系 <span class="tag">&lt;<span class="name">、</span>&gt;</span>、<span class="tag">&lt;<span class="name">=、</span>&gt;</span>=（lt、lte、gt、gte</span><br><span class="line">相等 =、!=</span><br><span class="line">逻辑 &amp;&amp;</span><br><span class="line">逻辑 ||</span><br><span class="line">    数字型比较，必须两边都是数字型</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    if elseif else 语句</span><br><span class="line">    <span class="tag">&lt;<span class="name">#if</span> <span class="attr">user</span> == <span class="string">""</span>&gt;</span></span><br><span class="line">        a为空</span><br><span class="line">    <span class="tag">&lt;<span class="name">#elseif</span> <span class="attr">user</span> != <span class="string">""</span>&gt;</span></span><br><span class="line">        $&#123;user&#125;不是空</span><br><span class="line">    <span class="tag">&lt;<span class="name">#else</span>&gt;</span></span><br><span class="line">        else</span><br><span class="line">    <span class="tag">&lt;/<span class="name">#if</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">pre</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/11/19/freemarker基本语法/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/19/docker-入门/" class="archive-article-date">
-  	<time datetime="2018-11-18T19:27:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-19</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/11/19/docker-入门/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">docker 入门</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/19/docker-入门/">docker 入门</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">docker</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -242,8 +307,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
