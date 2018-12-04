@@ -141,6 +141,68 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Mqtt-Java" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/05/Mqtt-Java/">Mqtt Java</a>
+    </h1>
+  
+
+        
+        <a href="/2018/12/05/Mqtt-Java/" class="archive-article-date">
+  	<time datetime="2018-12-04T18:31:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/12/05/Mqtt-Java/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-YAML基本语法" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
@@ -248,7 +310,21 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h3 id="1、基本上语法"><a href="#1、基本上语法" class="headerlink" title="1、基本上语法"></a>1、基本上语法</h3><hr>
+<p>k:空格v: 表示一对键值对 (空格必须有)；<br>以空格的缩进来控制层级关系；只要是左对齐的一列数据，都是同一层级的</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server:</span> </span><br><span class="line"><span class="attr">    port:</span> <span class="number">8081</span></span><br><span class="line"><span class="attr">    path:</span> <span class="string">/hello</span></span><br></pre></td></tr></table></figure>
+<p>属性和值也是大小写敏感的</p>
+<h3 id="2、值的写法"><a href="#2、值的写法" class="headerlink" title="2、值的写法"></a>2、值的写法</h3><p>字面量: 普通的值 (数字、字符串、布尔)<br>k: v: 字面直接来写；<br>&emsp;&emsp;字符串默认不用加单引号或者双引号；<br>&emsp;&emsp;””: 双引号；不会转义字符串里面的特殊字符；特殊字符会作为本身想表示的意思<br>&emsp;&emsp;&emsp;&emsp;&emsp;name: “zhangsan \n list” 输出；zhangsan 换行 lisi<br>&emsp;&emsp;&emsp;’’单引号；会转义特殊字符，特殊字符最终只是一个普通的字符串数据<br>&emsp;&emsp;&emsp;&emsp;&emsp;name: “zhangsan \n list” 输出；zhangsan \n lisi</p>
+<p>对象Map(属性和值) (键值对) :<br>&emsp;&emsp; k: v: 在下一行来写对象的属性和值的关系；注意缩进<br>&emsp;&emsp;&emsp;&emsp;对象还是k:v:形式</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">friends:</span> </span><br><span class="line"><span class="attr">    lastName:</span> <span class="string">zhangsan</span></span><br><span class="line"><span class="attr">    age:</span> <span class="number">20</span></span><br></pre></td></tr></table></figure>
+<p>行内写法:<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">friends:</span> <span class="string">&#123;lastName:</span> <span class="string">zhangsan,</span> <span class="attr">age:</span> <span class="number">18</span><span class="string">&#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>数组List、Set:<br>用-值表示数组中的一个元素<br>pets: </p>
+<ul>
+<li>cat</li>
+<li>dog</li>
+<li>pig<br>行内写法<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">pets:</span> <span class="string">[cat,dog,pig]</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+
       
 
       
@@ -256,6 +332,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">SpringBoot</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -793,11 +880,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
+                <a href="javascript:void(0)" class="js-tag color3">Firefox 渗透测试 安全工具</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Firefox 渗透测试 安全工具</a>
+                <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
               </li>
              
               <li class="article-tag-list-item">
