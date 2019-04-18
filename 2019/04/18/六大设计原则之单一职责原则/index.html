@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>六大设计原则之单一职责原则 | 仙书一两卷</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="单一职责原则(Single Responsibility Principle) SRP 不要存在多于一个导致类变更的原因。  单一职责原则，我的理解是将职责划分为最小单元，每个单元保证只做一件事情，最好让代码都处于一个抽象层次上。 就是保证一个类或方法只做一件事情! 以我刚工作不久写的一个Controler为例: 123456789101112131415161718192021222324252">
+  <meta name="description" content="单一职责原则(Single Responsibility Principle) SRP 不要存在多于一个导致类变更的原因。  单一职责原则，我的理解是将职责划分为最小单元，每个单元保证只做一件事情，最好让代码都处于一个抽象层次上。 就是保证一个类或方法只做一件事情! 以我刚工作不久写的一个Controller为例: 12345678910111213141516171819202122232425">
 <meta name="keywords" content="设计模式">
 <meta property="og:type" content="article">
 <meta property="og:title" content="六大设计原则之单一职责原则">
 <meta property="og:url" content="http://yoursite.com/2019/04/18/六大设计原则之单一职责原则/index.html">
 <meta property="og:site_name" content="仙书一两卷">
-<meta property="og:description" content="单一职责原则(Single Responsibility Principle) SRP 不要存在多于一个导致类变更的原因。  单一职责原则，我的理解是将职责划分为最小单元，每个单元保证只做一件事情，最好让代码都处于一个抽象层次上。 就是保证一个类或方法只做一件事情! 以我刚工作不久写的一个Controler为例: 123456789101112131415161718192021222324252">
+<meta property="og:description" content="单一职责原则(Single Responsibility Principle) SRP 不要存在多于一个导致类变更的原因。  单一职责原则，我的理解是将职责划分为最小单元，每个单元保证只做一件事情，最好让代码都处于一个抽象层次上。 就是保证一个类或方法只做一件事情! 以我刚工作不久写的一个Controller为例: 12345678910111213141516171819202122232425">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-18T15:24:53.608Z">
+<meta property="og:updated_time" content="2019-04-18T16:01:42.105Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="六大设计原则之单一职责原则">
-<meta name="twitter:description" content="单一职责原则(Single Responsibility Principle) SRP 不要存在多于一个导致类变更的原因。  单一职责原则，我的理解是将职责划分为最小单元，每个单元保证只做一件事情，最好让代码都处于一个抽象层次上。 就是保证一个类或方法只做一件事情! 以我刚工作不久写的一个Controler为例: 123456789101112131415161718192021222324252">
+<meta name="twitter:description" content="单一职责原则(Single Responsibility Principle) SRP 不要存在多于一个导致类变更的原因。  单一职责原则，我的理解是将职责划分为最小单元，每个单元保证只做一件事情，最好让代码都处于一个抽象层次上。 就是保证一个类或方法只做一件事情! 以我刚工作不久写的一个Controller为例: 12345678910111213141516171819202122232425">
   
     <link rel="alternative" href="/atom.xml" title="仙书一两卷" type="application/atom+xml">
   
@@ -166,7 +166,7 @@
 </blockquote>
 <p>单一职责原则，我的理解是将职责划分为最小单元，每个单元保证只做一件事情，最好让代码都处于一个抽象层次上。</p>
 <p>就是保证一个类或方法只做一件事情!</p>
-<p>以我刚工作不久写的一个Controler为例:</p>
+<p>以我刚工作不久写的一个Controller为例:</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 财务系统</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FinanceController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 通过单元格编辑修改工资信息</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">updateSalaryByCellModify</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 计算所得税</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">calculatingIncomeTax</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 修改工资</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">modifySalary</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 执行计算公式(字段间的加减乘除等运算,最后赋值给某个字段)</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">executionCalculationFormula</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 跳转到查看页面</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">toViewPage</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 跳转到批量修改工资页面</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">batchModificationSalary</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 跳转到自定义导出</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">toCustomExport</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * ...很多的跳转页面的方法</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 导出上报银行报表</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">reportToBank</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * ...很多的工资报表，银行所得表，工资条等导出方法和工资导入方法,生成excel模板等</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>我在这Controller中完成了太多的事情，基本上整个财务系统的大部分代码都是在这里实现的，并且因为页面显示字段是动态的，所以还有很多操作字段的各种方法。</p>
 <p>现在我要重构这个类，我们可以根据一类相似的事物去划分它！职责的划分，主要是根据不同的角度去做！<br>比如: 我把这个类化分为三部分：工资修改、页面的跳转、导入导出的方法, 以及对字段操作的工具类！   下一次需求变更就可以把代码写到对应的类别里。需要注意”我这里这么拆分是因为业务都是在一个模块上完成的”，它们都归属于一个需求！</p>
@@ -406,15 +406,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">代码整洁之道</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">代码优化</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">docker</a>
               </li>
              
               <li class="article-tag-list-item">
