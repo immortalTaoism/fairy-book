@@ -141,6 +141,194 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-SpringBoot日志框架" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/21/SpringBoot日志框架/">SpringBoot日志框架</a>
+    </h1>
+  
+
+        
+        <a href="/2018/11/21/SpringBoot日志框架/" class="archive-article-date">
+  	<time datetime="2018-11-20T18:23:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-为什么要使用日志框架"><a href="#1-为什么要使用日志框架" class="headerlink" title="1.为什么要使用日志框架"></a>1.为什么要使用日志框架</h2><p>在开发一个系统的时，如果我们都使用System.out.println(“”); 打印数据到控制<br>那么上线时，还需要一个个去掉，非常麻烦，同时，我们项目上线运行期间也要有日志，日期可能是警告，或者错误信息等等！<br>如果我们使用了日志框架，这些问题就都解决了</p>
+<h2 id="SpringBoot的框架"><a href="#SpringBoot的框架" class="headerlink" title="SpringBoot的框架"></a>SpringBoot的框架</h2><p>Spring底层是Srping框架，Spring框架默认使用的是JCL(commons.logging)日志框架<br>SpringBoot选用SLF4J和logback</p>
+<h2 id="SLF4J使用"><a href="#SLF4J使用" class="headerlink" title="SLF4J使用"></a>SLF4J使用</h2><p>SpringBoot底层也是使用slf4j+logback的方式进行日志记录<br>SpringBoot也是把其他的日志都替换成了slf4j</p>
+<p>如果我们要引入其他框架？一定要把这个框架的默认日志依赖移除掉？<br>Spring框架用的是commons-logging;<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring‐core<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">exclusions</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">exclusion</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>commons‐logging<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>commons‐logging<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">exclusion</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">exclusions</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>SpringBoot能自动适配所有的日志，而底层使用slf4j+logback的方式记录日志，引入其他框架时候，只需要如上，把这个框架依赖的日志框架排除即可；</p>
+<h2 id="日志使用"><a href="#日志使用" class="headerlink" title="日志使用"></a>日志使用</h2><p>1.默认配置<br>SpringBoot默认帮我们配置好了日志<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 记录器</span></span><br><span class="line">Logger logger = LoggerFactory.getLogger(getClass());</span><br><span class="line"></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">contextLoads</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 日志的级别</span></span><br><span class="line">    <span class="comment">// 由低到高 trace&lt;debug&lt;info&lt;warn&lt;error</span></span><br><span class="line">    <span class="comment">// 可以调整输出的日志级别; 日志就只会在这个级别以后的高级别生效</span></span><br><span class="line">    logger.trace(<span class="string">"这是trace日志..."</span>);</span><br><span class="line">    logger.debug(<span class="string">"这是debug日志..."</span>);</span><br><span class="line">    <span class="comment">// SpringBoot默认给我们使用的是info界别的，没有指定级别就是SpringBoot默认规定级别; root</span></span><br><span class="line">    </span><br><span class="line">    logger.info(<span class="string">"这是info日志..."</span>);</span><br><span class="line">    logger.warn(<span class="string">"这是warn日志..."</span>);</span><br><span class="line">    logger.error(<span class="string">"这是error日志..."</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">日志输出格式：</span><br><span class="line">	%d表示日期时间，</span><br><span class="line">	%thread表示线程名，</span><br><span class="line">	%‐5level：级别从左显示5个字符宽度</span><br><span class="line">	%logger&#123;50&#125;表示logger名字最长50个字符，否则按照句点分割。</span><br><span class="line">	%msg：日志消息，</span><br><span class="line">	%n是换行符</span><br><span class="line">%d&#123;yyyy‐MM‐ddHH:mm:ss.SSS&#125;[%thread]%‐5level%logger&#123;50&#125;‐%msg%n</span><br></pre></td></tr></table></figure>
+<p>SpringBoot修改日志默认配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">logging.level.com.atguigu=trace</span><br><span class="line">#logging.path=</span><br><span class="line"># 不指定路径在当前项目下生成springboot.log日志</span><br><span class="line"># 可以指定完整的路径；</span><br><span class="line">#logging.file=G:/springboot.log</span><br><span class="line"># 在当前磁盘的根路径下创建spring文件夹和里面的log文件夹；使用 spring.log 作为默认文件</span><br><span class="line">logging.path=/spring/log</span><br><span class="line">#  在控制台输出的日志的格式</span><br><span class="line">logging.pattern.console=%d&#123;yyyy‐MM‐dd&#125; [%thread] %‐5level %logger&#123;50&#125; ‐ %msg%n</span><br><span class="line"># 指定文件中日志输出的格式</span><br><span class="line">logging.pattern.file=%d&#123;yyyy‐MM‐dd&#125; === [%thread] === %‐5level === %logger&#123;50&#125; ==== %msg%n</span><br></pre></td></tr></table></figure></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">SpringBoot</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/11/21/SpringBoot日志框架/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Firefox-安全测试实用插件" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/20/Firefox-安全测试实用插件/">Firefox 安全测试实用插件</a>
+    </h1>
+  
+
+        
+        <a href="/2018/11/20/Firefox-安全测试实用插件/" class="archive-article-date">
+  	<time datetime="2018-11-20T15:58:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>推荐七个Firefox插件，非常实用,功能强大</p>
+</blockquote>
+<h2 id="Firefox下载安装"><a href="#Firefox下载安装" class="headerlink" title="Firefox下载安装"></a>Firefox下载安装</h2><blockquote>
+<p>为什么在这里要先说下载和安装呢？<br>自从Firefox升级之后，已经不在兼容旧版本的一些插件了，所以先安装一个旧版本的火狐浏览器<br>我使用的是2016的Firefox 50.0b10，下载地址请看文末！</p>
+</blockquote>
+<p><strong>注意重点</strong><br>安装成功后最好先断网，因为Firefox可能会自动更新到最新版本,取消自动更新如下<br>选择 –&gt; 高级 –&gt; 更新 –》 勾选 [不检查更新（不推荐：存在安全风险）]<br><img src="/img/20181121001.png" alt="20181121001"></p>
+<p><img src="/img/20181121002.png" alt="20181121002"></p>
+<h2 id="Firebug"><a href="#Firebug" class="headerlink" title="Firebug"></a>Firebug</h2><blockquote>
+<p>前端调试利器，挖掘XSS的强大工具</p>
+</blockquote>
+<p><img src="/img/20181121003.png" alt="20181121002"></p>
+<h2 id="HackBar"><a href="#HackBar" class="headerlink" title="HackBar"></a>HackBar</h2><blockquote>
+<p>支持POST提交,添加Referrer头，并且提供了一些注入快速生成的小功能，xss，以及MD5,SHA,BASE 64，URL和hex编码</p>
+</blockquote>
+<p><img src="/img/20181121004.png" alt="20181121002"></p>
+<h2 id="Live-HTTP-headers"><a href="#Live-HTTP-headers" class="headerlink" title="Live HTTP headers"></a>Live HTTP headers</h2><blockquote>
+<p>一款流量监控的插件，还挺不错的！</p>
+</blockquote>
+<p><img src="/img/20181121005.png" alt="20181121002"></p>
+<h2 id="Cookies-Manager"><a href="#Cookies-Manager" class="headerlink" title="Cookies Manager+"></a>Cookies Manager+</h2><blockquote>
+<p>一个可以CURD Cookie的插件，很常用的功能</p>
+</blockquote>
+<p><img src="/img/20181121006.png" alt="20181121002"></p>
+<h2 id="User-Agent-Switcher"><a href="#User-Agent-Switcher" class="headerlink" title="User Agent Switcher"></a>User Agent Switcher</h2><blockquote>
+<p>可以改变User Agent的小工具，大多数时候我们访问移动端的时候可能需要用到</p>
+</blockquote>
+<p><img src="/img/20181121007.png" alt="20181121002"></p>
+<h2 id="XSS-Me"><a href="#XSS-Me" class="headerlink" title="XSS Me"></a>XSS Me</h2><p>一个可以在需要测试XSS表单处,直接插入Payload的工具，具体看图<br>右键 - Open XSS Me Sidebar可以打开操作窗口,找到要执行payload的参数，勾选,然后点击Execute执行，默认是把所有的payload测试一遍<br><img src="/img/20181121008.png" alt="20181121002"><br>也可以手动执行一个payload<br><img src="/img/201811210081.png" alt="20181121002"><br>在插件的设置里面也可以自由设定Payload和攻击次数<br><img src="/img/201811210082.png" alt="20181121002"></p>
+<h2 id="rightclickxss"><a href="#rightclickxss" class="headerlink" title="rightclickxss"></a>rightclickxss</h2><blockquote>
+<p>类似上面的XSS Me，但是我没有找到可以自定义配置Payload的功能<br><img src="/img/20181121009.png" alt="20181121002"></p>
+</blockquote>
+<p><br><br>Firefox下载地址:  <a href="https://download.pchome.net/internet/browser/browser/detail-19049.html" target="_blank" rel="noopener">点击</a>  </p>
+<p>插件自己在附加组件里面搜索即可! 如果是搜索不到的可以百度找一下插件的链接，在Firefox访问链接可以直接安装</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Firefox 渗透测试 安全工具</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/11/20/Firefox-安全测试实用插件/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-freemarker基本语法" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
@@ -472,7 +660,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">docker</a>
+                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -485,6 +673,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">代码优化</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">docker</a>
               </li>
              
               <li class="article-tag-list-item">

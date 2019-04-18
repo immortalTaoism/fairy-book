@@ -141,6 +141,235 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-六大设计原则之单一职责原则" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/18/六大设计原则之单一职责原则/">六大设计原则之单一职责原则</a>
+    </h1>
+  
+
+        
+        <a href="/2019/04/18/六大设计原则之单一职责原则/" class="archive-article-date">
+  	<time datetime="2019-04-18T15:24:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="单一职责原则-Single-Responsibility-Principle-SRP"><a href="#单一职责原则-Single-Responsibility-Principle-SRP" class="headerlink" title="单一职责原则(Single Responsibility Principle) SRP"></a>单一职责原则(Single Responsibility Principle) SRP</h2><blockquote>
+<p>不要存在多于一个导致类变更的原因。</p>
+</blockquote>
+<p>单一职责原则，我的理解是将职责划分为最小单元，每个单元保证只做一件事情，最好让代码都处于一个抽象层次上。</p>
+<p>就是保证一个类或方法只做一件事情!</p>
+<p>以我刚工作不久写的一个Controler为例:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 财务系统</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FinanceController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 通过单元格编辑修改工资信息</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">updateSalaryByCellModify</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 计算所得税</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">calculatingIncomeTax</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 修改工资</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">modifySalary</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 执行计算公式(字段间的加减乘除等运算,最后赋值给某个字段)</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">executionCalculationFormula</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 跳转到查看页面</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">toViewPage</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 跳转到批量修改工资页面</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">batchModificationSalary</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 跳转到自定义导出</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">toCustomExport</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * ...很多的跳转页面的方法</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 导出上报银行报表</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">reportToBank</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * ...很多的工资报表，银行所得表，工资条等导出方法和工资导入方法,生成excel模板等</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我在这Controller中完成了太多的事情，基本上整个财务系统的大部分代码都是在这里实现的，并且因为页面显示字段是动态的，所以还有很多操作字段的各种方法。</p>
+<p>现在我要重构这个类，我们可以根据一类相似的事物去划分它！职责的划分，主要是根据不同的角度去做！<br>比如: 我把这个类化分为三部分：工资修改、页面的跳转、导入导出的方法, 以及对字段操作的工具类！   下一次需求变更就可以把代码写到对应的类别里。需要注意”我这里这么拆分是因为业务都是在一个模块上完成的”，它们都归属于一个需求！</p>
+<p>最后我们可以分化成四个类:<br>一、FinanceController<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 完成页面的跳转</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FinanceController</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 跳转到查看页面</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">toViewPage</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 跳转到批量修改工资页面</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">batchModificationSalary</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 跳转到自定义导出</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">toCustomExport</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>二、SalaryChangeController<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 薪水的变动</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SalaryChangeController</span> </span>&#123;</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 通过单元格编辑修改工资信息</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">updateSalaryByCellModify</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 计算所得税</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">calculatingIncomeTax</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 修改工资</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">modifySalary</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 执行计算公式(字段间的加减乘除等运算,最后赋值给某个字段)</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">executionCalculationFormula</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>三、SalaryReportController<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 系统的各类报表导出</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SalaryReportController</span> </span>&#123;</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 导出上报银行报表</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">reportToBank</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 工资汇总表</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">salarySummary</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>四、BaseFieldOperationController<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 动态字段操作</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BaseFieldOperationController</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 根据字段别名找到字段的映射信息</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">selectByAlias</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>经过划分后，我们的类的职责就很明显了，我们前面说过一句话“不要存在多于一个导致类变更的原因。”做到这个条件是比较苛刻的，所以我们写程序的时候只要尽可能的抽象贴近单一职责原则。<br>学习了单一职责原则后，以后拿到需求我们也是应该先抽象出具体，然后拆分！</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">设计模式</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/04/18/六大设计原则之单一职责原则/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-一、从3W了解设计模式" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/18/一、从3W了解设计模式/">一、从3W了解设计模式</a>
+    </h1>
+  
+
+        
+        <a href="/2019/04/18/一、从3W了解设计模式/" class="archive-article-date">
+  	<time datetime="2019-04-18T15:23:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="一、Waht-什么是设计模式"><a href="#一、Waht-什么是设计模式" class="headerlink" title="一、Waht | 什么是设计模式?"></a>一、Waht | 什么是设计模式?</h3><p><strong>定义:</strong> 设计模式一套呗反复使用的、多数人知晓的、经过分类编目的、代码设计经验的总结<br><strong>白话:</strong> 是大多数人反复使用的一些方法，经过分类后的总结。在团队交流中，能够让我们通过一个关键字Get到其他人想表达什么！<br><strong>特性一:</strong> 面向对象（设计模式是面向对象特有的概念）<br><strong>特性二:</strong> 与具体的语言无关（只要是面向对象的语言都可以使用设计模式）</p>
+<h3 id="二、Why-为什么要用设计模式"><a href="#二、Why-为什么要用设计模式" class="headerlink" title="二、Why | 为什么要用设计模式?"></a>二、Why | 为什么要用设计模式?</h3><p>1.使代码可复用<br>2.增加可维护性</p>
+<h3 id="三、When-什么时候用设计模式"><a href="#三、When-什么时候用设计模式" class="headerlink" title="三、When |什么时候用设计模式?"></a>三、When |什么时候用设计模式?</h3><p>1.有一定的代码编写经验和理解<br>2.开发: 合适的场景，匹配的问题，清晰的解决方案<br>3.重构</p>
+<h2 id="23种设计模式"><a href="#23种设计模式" class="headerlink" title="23种设计模式"></a>23种设计模式</h2><table>
+<thead>
+<tr>
+<th>创建型</th>
+<th>结构型</th>
+<th>行为型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>工厂方法模式(FactoryMethod)</td>
+<td>适配器模式(Adapter)</td>
+<td>解释器模式(Interpreter)</td>
+</tr>
+<tr>
+<td>抽象工厂模式(AbstractFactory)</td>
+<td>桥接模式(Bridge)</td>
+<td>模板方法模式(Template Method)</td>
+</tr>
+<tr>
+<td>建造者模式(Builder)</td>
+<td>组合模式(Composite)</td>
+<td>责任链模式(China Of Responsibility)</td>
+</tr>
+<tr>
+<td>原型模式(Prototyoe)</td>
+<td>装者模式(Decorator)</td>
+<td>命令模式(Command)</td>
+</tr>
+<tr>
+<td>单例模式(Singleton)</td>
+<td>门面模式(Facade)</td>
+<td>迭代器模式(Iterator)</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>享元模式(Flyweight)</td>
+<td>中介者模式(Mediator)</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>代理模式(Proxy)</td>
+<td>备忘录模式(Mementor)</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>观察者模式(Observer)</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>状态模式(State)</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>策略模式(Strategy)</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>访问者模式(Visitor)</td>
+</tr>
+</tbody>
+</table>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">设计模式</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/04/18/一、从3W了解设计模式/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-晚上想想千条路-早上醒来走原路" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
@@ -792,194 +1021,6 @@
 
 
   
-    <article id="post-SpringBoot日志框架" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/21/SpringBoot日志框架/">SpringBoot日志框架</a>
-    </h1>
-  
-
-        
-        <a href="/2018/11/21/SpringBoot日志框架/" class="archive-article-date">
-  	<time datetime="2018-11-20T18:23:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="1-为什么要使用日志框架"><a href="#1-为什么要使用日志框架" class="headerlink" title="1.为什么要使用日志框架"></a>1.为什么要使用日志框架</h2><p>在开发一个系统的时，如果我们都使用System.out.println(“”); 打印数据到控制<br>那么上线时，还需要一个个去掉，非常麻烦，同时，我们项目上线运行期间也要有日志，日期可能是警告，或者错误信息等等！<br>如果我们使用了日志框架，这些问题就都解决了</p>
-<h2 id="SpringBoot的框架"><a href="#SpringBoot的框架" class="headerlink" title="SpringBoot的框架"></a>SpringBoot的框架</h2><p>Spring底层是Srping框架，Spring框架默认使用的是JCL(commons.logging)日志框架<br>SpringBoot选用SLF4J和logback</p>
-<h2 id="SLF4J使用"><a href="#SLF4J使用" class="headerlink" title="SLF4J使用"></a>SLF4J使用</h2><p>SpringBoot底层也是使用slf4j+logback的方式进行日志记录<br>SpringBoot也是把其他的日志都替换成了slf4j</p>
-<p>如果我们要引入其他框架？一定要把这个框架的默认日志依赖移除掉？<br>Spring框架用的是commons-logging;<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring‐core<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">exclusions</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">exclusion</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>commons‐logging<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>commons‐logging<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">exclusion</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">exclusions</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>SpringBoot能自动适配所有的日志，而底层使用slf4j+logback的方式记录日志，引入其他框架时候，只需要如上，把这个框架依赖的日志框架排除即可；</p>
-<h2 id="日志使用"><a href="#日志使用" class="headerlink" title="日志使用"></a>日志使用</h2><p>1.默认配置<br>SpringBoot默认帮我们配置好了日志<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 记录器</span></span><br><span class="line">Logger logger = LoggerFactory.getLogger(getClass());</span><br><span class="line"></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">contextLoads</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 日志的级别</span></span><br><span class="line">    <span class="comment">// 由低到高 trace&lt;debug&lt;info&lt;warn&lt;error</span></span><br><span class="line">    <span class="comment">// 可以调整输出的日志级别; 日志就只会在这个级别以后的高级别生效</span></span><br><span class="line">    logger.trace(<span class="string">"这是trace日志..."</span>);</span><br><span class="line">    logger.debug(<span class="string">"这是debug日志..."</span>);</span><br><span class="line">    <span class="comment">// SpringBoot默认给我们使用的是info界别的，没有指定级别就是SpringBoot默认规定级别; root</span></span><br><span class="line">    </span><br><span class="line">    logger.info(<span class="string">"这是info日志..."</span>);</span><br><span class="line">    logger.warn(<span class="string">"这是warn日志..."</span>);</span><br><span class="line">    logger.error(<span class="string">"这是error日志..."</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">日志输出格式：</span><br><span class="line">	%d表示日期时间，</span><br><span class="line">	%thread表示线程名，</span><br><span class="line">	%‐5level：级别从左显示5个字符宽度</span><br><span class="line">	%logger&#123;50&#125;表示logger名字最长50个字符，否则按照句点分割。</span><br><span class="line">	%msg：日志消息，</span><br><span class="line">	%n是换行符</span><br><span class="line">%d&#123;yyyy‐MM‐ddHH:mm:ss.SSS&#125;[%thread]%‐5level%logger&#123;50&#125;‐%msg%n</span><br></pre></td></tr></table></figure>
-<p>SpringBoot修改日志默认配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">logging.level.com.atguigu=trace</span><br><span class="line">#logging.path=</span><br><span class="line"># 不指定路径在当前项目下生成springboot.log日志</span><br><span class="line"># 可以指定完整的路径；</span><br><span class="line">#logging.file=G:/springboot.log</span><br><span class="line"># 在当前磁盘的根路径下创建spring文件夹和里面的log文件夹；使用 spring.log 作为默认文件</span><br><span class="line">logging.path=/spring/log</span><br><span class="line">#  在控制台输出的日志的格式</span><br><span class="line">logging.pattern.console=%d&#123;yyyy‐MM‐dd&#125; [%thread] %‐5level %logger&#123;50&#125; ‐ %msg%n</span><br><span class="line"># 指定文件中日志输出的格式</span><br><span class="line">logging.pattern.file=%d&#123;yyyy‐MM‐dd&#125; === [%thread] === %‐5level === %logger&#123;50&#125; ==== %msg%n</span><br></pre></td></tr></table></figure></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">SpringBoot</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/21/SpringBoot日志框架/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Firefox-安全测试实用插件" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/20/Firefox-安全测试实用插件/">Firefox 安全测试实用插件</a>
-    </h1>
-  
-
-        
-        <a href="/2018/11/20/Firefox-安全测试实用插件/" class="archive-article-date">
-  	<time datetime="2018-11-20T15:58:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>推荐七个Firefox插件，非常实用,功能强大</p>
-</blockquote>
-<h2 id="Firefox下载安装"><a href="#Firefox下载安装" class="headerlink" title="Firefox下载安装"></a>Firefox下载安装</h2><blockquote>
-<p>为什么在这里要先说下载和安装呢？<br>自从Firefox升级之后，已经不在兼容旧版本的一些插件了，所以先安装一个旧版本的火狐浏览器<br>我使用的是2016的Firefox 50.0b10，下载地址请看文末！</p>
-</blockquote>
-<p><strong>注意重点</strong><br>安装成功后最好先断网，因为Firefox可能会自动更新到最新版本,取消自动更新如下<br>选择 –&gt; 高级 –&gt; 更新 –》 勾选 [不检查更新（不推荐：存在安全风险）]<br><img src="/img/20181121001.png" alt="20181121001"></p>
-<p><img src="/img/20181121002.png" alt="20181121002"></p>
-<h2 id="Firebug"><a href="#Firebug" class="headerlink" title="Firebug"></a>Firebug</h2><blockquote>
-<p>前端调试利器，挖掘XSS的强大工具</p>
-</blockquote>
-<p><img src="/img/20181121003.png" alt="20181121002"></p>
-<h2 id="HackBar"><a href="#HackBar" class="headerlink" title="HackBar"></a>HackBar</h2><blockquote>
-<p>支持POST提交,添加Referrer头，并且提供了一些注入快速生成的小功能，xss，以及MD5,SHA,BASE 64，URL和hex编码</p>
-</blockquote>
-<p><img src="/img/20181121004.png" alt="20181121002"></p>
-<h2 id="Live-HTTP-headers"><a href="#Live-HTTP-headers" class="headerlink" title="Live HTTP headers"></a>Live HTTP headers</h2><blockquote>
-<p>一款流量监控的插件，还挺不错的！</p>
-</blockquote>
-<p><img src="/img/20181121005.png" alt="20181121002"></p>
-<h2 id="Cookies-Manager"><a href="#Cookies-Manager" class="headerlink" title="Cookies Manager+"></a>Cookies Manager+</h2><blockquote>
-<p>一个可以CURD Cookie的插件，很常用的功能</p>
-</blockquote>
-<p><img src="/img/20181121006.png" alt="20181121002"></p>
-<h2 id="User-Agent-Switcher"><a href="#User-Agent-Switcher" class="headerlink" title="User Agent Switcher"></a>User Agent Switcher</h2><blockquote>
-<p>可以改变User Agent的小工具，大多数时候我们访问移动端的时候可能需要用到</p>
-</blockquote>
-<p><img src="/img/20181121007.png" alt="20181121002"></p>
-<h2 id="XSS-Me"><a href="#XSS-Me" class="headerlink" title="XSS Me"></a>XSS Me</h2><p>一个可以在需要测试XSS表单处,直接插入Payload的工具，具体看图<br>右键 - Open XSS Me Sidebar可以打开操作窗口,找到要执行payload的参数，勾选,然后点击Execute执行，默认是把所有的payload测试一遍<br><img src="/img/20181121008.png" alt="20181121002"><br>也可以手动执行一个payload<br><img src="/img/201811210081.png" alt="20181121002"><br>在插件的设置里面也可以自由设定Payload和攻击次数<br><img src="/img/201811210082.png" alt="20181121002"></p>
-<h2 id="rightclickxss"><a href="#rightclickxss" class="headerlink" title="rightclickxss"></a>rightclickxss</h2><blockquote>
-<p>类似上面的XSS Me，但是我没有找到可以自定义配置Payload的功能<br><img src="/img/20181121009.png" alt="20181121002"></p>
-</blockquote>
-<p><br><br>Firefox下载地址:  <a href="https://download.pchome.net/internet/browser/browser/detail-19049.html" target="_blank" rel="noopener">点击</a>  </p>
-<p>插件自己在附加组件里面搜索即可! 如果是搜索不到的可以百度找一下插件的链接，在Firefox访问链接可以直接安装</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Firefox 渗透测试 安全工具</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/20/Firefox-安全测试实用插件/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1089,7 +1130,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">docker</a>
+                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1102,6 +1143,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">代码优化</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">docker</a>
               </li>
              
               <li class="article-tag-list-item">
